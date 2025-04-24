@@ -25,7 +25,7 @@ jobs:
         run: mvn test
 
       - name: Upload WAR artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: webapp-package
           path: target/*.war

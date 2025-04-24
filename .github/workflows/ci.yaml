@@ -24,8 +24,11 @@ jobs:
       - name: Run unit tests
         run: mvn test
 
-      - name: Upload WAR artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: webapp-package
-          path: target/*.war
+      - name: Persist WAR file
+        run: |
+          mkdir -p $GITHUB_WORKSPACE/artifacts
+          cp target/*.war $GITHUB_WORKSPACE/artifacts/
+      - name: List artifacts directory
+        run: |
+          echo "Artifacts in workspace:"
+          ls -R $GITHUB_WORKSPACE/artifacts
